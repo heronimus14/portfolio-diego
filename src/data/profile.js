@@ -6,9 +6,9 @@ export const profileData = {
   bio: "Saya adalah mahasiswa yang tertarik pada pengembangan website dan personal branding. Di luar project digital, saya juga aktif dalam organisasi, kepanitiaan besar, lomba, serta kegiatan kreatif seperti paduan suara. Pengalaman tersebut membentuk saya menjadi pribadi yang komunikatif, disiplin, adaptif, dan terbiasa bekerja dalam tim.", // Deskripsi diri
   location: "Palembang, Indonesia",
   
-  // Ganti placeholder gambar dengan path gambar aslimu di folder public/images/
+  // Ganti placeholder gambar dengan path gambar aslimu di folder /images/
   // Contoh: "/images/foto-saya.jpg"
-  photo: "/public/images/profile.jpg", // Ganti dengan path gambar kamu di public folder
+  photo: "//images/profile.jpg", // Ganti dengan path gambar kamu di public folder
   
   // Kontak dan Social Media
   email: "heronimusdiego14@gmail.com",
