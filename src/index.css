@@ -35,3 +35,34 @@
     scrollbar-width: none;
   }
 }
+
+/* Mobile performance overrides: reduce heavy filters and shadows */
+@media (max-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(6px) !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18) !important;
+  }
+
+  .backdrop-blur-md, .backdrop-blur-lg {
+    backdrop-filter: blur(6px) !important;
+  }
+
+  /* reduce large custom blur utilities used for backgrounds */
+  .blur-\[100px\], .blur-\[120px\], .blur-\[80px\] {
+    filter: blur(20px) !important;
+  }
+
+  /* shorten transitions on mobile */
+  * {
+    transition-duration: 180ms !important;
+  }
+}
+
+/* Honor reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
