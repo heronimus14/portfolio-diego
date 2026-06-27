@@ -172,6 +172,9 @@ const Experiences = () => {
           <p className="text-gray-400 max-w-2xl text-lg">
             Pengalaman saya di luar dunia coding, termasuk organisasi, kepanitiaan, dan kegiatan kreatif.
           </p>
+          <p className="mt-4 text-sm text-gray-400 md:hidden">
+            Geser untuk melihat pengalaman lainnya <span aria-hidden="true">→</span>
+          </p>
         </motion.div>
 
         {/* Horizontal Scroll on Mobile, Grid on Desktop */}
