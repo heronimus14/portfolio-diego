@@ -8,7 +8,7 @@ export const profileData = {
   
   // Ganti placeholder gambar dengan path gambar aslimu di folder /images/
   // Contoh: "/images/foto-saya.jpg"
-  photo: "//images/profile.jpg", // Ganti dengan path gambar kamu di public folder
+  photo: "/images/profile.jpg", // Ganti dengan path gambar kamu di public folder
   
   // Kontak dan Social Media
   email: "heronimusdiego14@gmail.com",
