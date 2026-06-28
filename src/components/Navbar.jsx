@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { profileData } from '../data/profile';
 import { User, Briefcase, Award, Mail } from 'lucide-react';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Navbar = () => {
+  const reduced = usePrefersReducedMotion();
   const navItems = [
     { icon: <User size={18} />, href: "#about", label: "Tentang" },
     { icon: <Briefcase size={18} />, href: "#projects", label: "Proyek" },
@@ -12,9 +14,9 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
+      initial={reduced ? false : { y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
+      transition={{ duration: reduced ? 0.2 : 0.6, delay: reduced ? 0 : 0.3 }}
       className="fixed top-0 left-0 right-0 z-40 flex justify-center pt-4 px-4 pointer-events-none"
     >
       <div className="glass-card px-6 py-3 rounded-full flex items-center gap-6 pointer-events-auto shadow-lg bg-black/40">

@@ -12,7 +12,7 @@ const Achievements = () => {
   };
 
   return (
-    <section className="py-20 px-6 max-w-4xl mx-auto relative z-10 w-full">
+    <section className="perf-section py-20 px-6 max-w-4xl mx-auto relative z-10 w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

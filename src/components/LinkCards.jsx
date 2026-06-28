@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { profileData } from '../data/profile';
 import { Camera, GitBranch, Briefcase, Mail, MessageCircle } from 'lucide-react';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const LinkCards = () => {
+  const reduced = usePrefersReducedMotion();
   const waLink = `https://wa.me/${profileData.whatsapp}?text=Halo%2C%20saya%20tertarik%20untuk%20diskusi%20project%20dengan%20Anda`;
 
   const links = [
@@ -69,28 +71,29 @@ const LinkCards = () => {
   };
 
   return (
-    <section className="py-10 px-6 max-w-4xl mx-auto relative z-10 w-full">
+    <section className="perf-section py-10 px-6 max-w-4xl mx-auto relative z-10 w-full">
       <motion.div 
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        initial={reduced ? false : "hidden"}
+        whileInView={reduced ? undefined : "visible"}
+        viewport={reduced ? undefined : { once: true, margin: "-100px" }}
         className="grid grid-cols-1 md:grid-cols-2 gap-4"
       >
         {links.map((link, index) => (
           <motion.a
             key={index}
             variants={itemVariants}
+            initial={reduced ? false : undefined}
             href={link.url}
             target="_blank"
             rel="noreferrer"
-            className={`group relative glass-card p-4 rounded-2xl flex items-center gap-4 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${link.borderColor}`}
+            className={`group relative glass-card p-4 rounded-2xl flex items-center gap-4 overflow-hidden transition-all duration-300 md:hover:-translate-y-1 ${link.borderColor}`}
           >
             {/* Background Hover Gradient */}
             <div className={`absolute inset-0 bg-gradient-to-r ${link.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
             
             {/* Icon Container */}
-            <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 ${link.iconColor} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner`}>
+            <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 ${link.iconColor} md:group-hover:scale-110 md:group-hover:rotate-3 transition-transform duration-300 shadow-inner`}>
               {link.icon}
             </div>
             
@@ -105,7 +108,7 @@ const LinkCards = () => {
             </div>
             
             {/* Arrow */}
-            <div className="text-gray-500 group-hover:text-white group-hover:translate-x-1 transition-all duration-300">
+            <div className="text-gray-500 md:group-hover:text-white md:group-hover:translate-x-1 transition-all duration-300">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

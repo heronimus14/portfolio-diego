@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { profileData } from '../data/profile';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const About = () => {
+  const reduced = usePrefersReducedMotion();
   const stats = [
     { label: "Proyek Web", value: profileData.stats.webProjects, suffix: "+" },
     { label: "Aktivitas Kreatif", value: profileData.stats.creativeActivities, suffix: "+" },
@@ -10,12 +12,12 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-6 max-w-5xl mx-auto relative z-10 w-full scroll-mt-20">
+    <section id="about" className="perf-section py-20 px-6 max-w-5xl mx-auto relative z-10 w-full scroll-mt-20">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7 }}
+        initial={reduced ? false : { opacity: 0, y: 30 }}
+        whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+        viewport={reduced ? undefined : { once: true, margin: "-100px" }}
+        transition={{ duration: reduced ? 0.3 : 0.7 }}
         className="glass-card rounded-[2.5rem] p-8 md:p-12"
       >
         <div className="flex flex-col md:flex-row gap-12 items-center">

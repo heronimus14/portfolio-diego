@@ -4,11 +4,12 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Hero = () => {
+  const reduced = usePrefersReducedMotion();
   return (
     <section id="home" className="min-h-[90vh] flex flex-col justify-center items-center pt-24 pb-12 px-6 text-center relative z-10">
       
       {/* Floating Profile Image */}
-      <HeroImageBlock />
+      <HeroImageBlock reduced={reduced} />
 
       {/* Main Text Content */}
       <motion.div
@@ -28,10 +29,10 @@ const Hero = () => {
         {/* CTA Buttons */}
         <div className="flex flex-wrap justify-center gap-4">
           <motion.a 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={reduced ? undefined : { scale: 1.05 }}
+            whileTap={reduced ? undefined : { scale: 0.95 }}
             href="#projects" 
-            className="px-6 py-3 bg-gradient-to-r from-accent to-accent-dark text-white rounded-full font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(2,132,199,0.4)] transition-shadow hover:shadow-[0_0_30px_rgba(2,132,199,0.6)]"
+            className="px-6 py-3 bg-gradient-to-r from-accent to-accent-dark text-white rounded-full font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(2,132,199,0.4)] transition-shadow md:hover:shadow-[0_0_30px_rgba(2,132,199,0.6)]"
           >
             Lihat Karya Saya <ArrowRight size={18} />
           </motion.a>
@@ -43,8 +44,7 @@ const Hero = () => {
 
 export default Hero;
 
-function HeroImageBlock() {
-  const reduced = usePrefersReducedMotion();
+function HeroImageBlock({ reduced }) {
 
   return (
     <div className="relative mb-8">
@@ -52,7 +52,7 @@ function HeroImageBlock() {
         <img
           src={profileData.photo}
           alt={profileData.name}
-          loading={reduced ? 'lazy' : 'eager'}
+          loading="eager"
           decoding="async"
           width={160}
           height={160}

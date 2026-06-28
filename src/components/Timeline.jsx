@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion';
 import { timelineData } from '../data/timeline';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Timeline = () => {
+  const reduced = usePrefersReducedMotion();
   return (
-    <section id="timeline" className="py-20 px-6 max-w-3xl mx-auto relative z-10 w-full scroll-mt-20">
+    <section id="timeline" className="perf-section py-20 px-6 max-w-3xl mx-auto relative z-10 w-full scroll-mt-20">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        initial={reduced ? false : { opacity: 0, y: 20 }}
+        whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+        viewport={reduced ? undefined : { once: true, margin: '-100px' }}
+        transition={{ duration: reduced ? 0.28 : 0.5 }}
         className="mb-12 text-center"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">

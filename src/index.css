@@ -16,11 +16,21 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+    @apply bg-white/5 border border-white/10 rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+    backdrop-filter: blur(18px);
   }
   
   .glass-card-hover {
     @apply hover:bg-white/10 hover:border-white/20 transition-all duration-300;
+  }
+
+  .perf-section {
+    content-visibility: auto;
+    contain: layout paint;
+  }
+
+  .perf-card {
+    contain: layout paint;
   }
   
   .text-gradient {
@@ -41,6 +51,15 @@
   .glass-card {
     backdrop-filter: blur(6px) !important;
     box-shadow: 0 6px 18px rgba(0,0,0,0.18) !important;
+  }
+  .glass-card .backdrop-blur-md, .glass-card .backdrop-blur-lg {
+    backdrop-filter: blur(6px) !important;
+  }
+  .glass-card-hover, .transition-all, .transition-colors, .transition-shadow, .transition-opacity, .transition-transform {
+    transition-duration: 200ms !important;
+  }
+  .animate-marquee {
+    animation: none !important;
   }
 
   .backdrop-blur-md, .backdrop-blur-lg {
