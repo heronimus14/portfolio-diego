@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { experiencesData } from '../data/experiences';
-import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Experiences = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,7 +13,6 @@ const Experiences = () => {
   const itemWidthRef = useRef(0);
   const currentSlideRef = useRef(0);
   const [displayExperiences, setDisplayExperiences] = useState(experiencesData);
-  const reduced = usePrefersReducedMotion();
 
   const clearInteractionTimeout = () => {
     if (interactionTimeoutRef.current) {
@@ -91,7 +89,7 @@ const Experiences = () => {
     const currentIndex = getCurrentSlideIndex();
     const nextIndex = currentIndex + 1;
     isAutoScrollingRef.current = true;
-    container.scrollTo({ left: nextIndex * itemWidthRef.current, behavior: reduced ? 'auto' : 'smooth' });
+    container.scrollTo({ left: nextIndex * itemWidthRef.current, behavior: 'smooth' });
     currentSlideRef.current = nextIndex;
 
     window.setTimeout(() => {
@@ -116,7 +114,7 @@ const Experiences = () => {
     };
 
     updateMobileState();
-    window.addEventListener('resize', updateMobileState, { passive: true });
+    window.addEventListener('resize', updateMobileState);
     return () => window.removeEventListener('resize', updateMobileState);
   }, []);
 
@@ -139,7 +137,7 @@ const Experiences = () => {
 
     autoSlideIntervalRef.current = window.setInterval(() => {
       slideToNext();
-    }, reduced ? 6000 : 4000);
+    }, 4000);
 
     return () => {
       if (autoSlideIntervalRef.current) {
@@ -160,13 +158,12 @@ const Experiences = () => {
   }, []);
 
   return (
-    <section id="experiences" className="perf-section py-20 pl-6 md:px-6 relative z-10 w-full overflow-hidden scroll-mt-20">
+    <section id="experiences" className="py-20 pl-6 md:px-6 relative z-10 w-full overflow-hidden scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={reduced ? false : { opacity: 0, y: 20 }}
-          whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-          viewport={reduced ? undefined : { once: true, margin: "-100px" }}
-          transition={{ duration: reduced ? 0.3 : 0.45 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           className="mb-12 pr-6 md:pr-0"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -211,11 +208,11 @@ const Experiences = () => {
             <motion.div
               key={`${exp.id}-${index}`}
               data-carousel-item
-              initial={reduced ? false : { opacity: 0, x: 50 }}
-              whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
-              viewport={reduced ? undefined : { once: true, margin: "-50px" }}
-              transition={{ duration: reduced ? 0.28 : 0.5, delay: reduced ? 0 : index * 0.05 }}
-              className="min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center glass-card rounded-3xl overflow-hidden group relative transform transition-all duration-300 md:hover:-translate-y-2 md:hover:border-accent/40"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              className="min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center glass-card rounded-3xl overflow-hidden group relative transform transition-all duration-300 hover:-translate-y-2 hover:border-accent/40"
             >
               {/* Image & Gradient */}
               <div className="h-48 relative overflow-hidden">

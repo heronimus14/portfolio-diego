@@ -1,12 +1,10 @@
 import { motion } from 'framer-motion';
 import { projectsData } from '../data/projects';
 import { ExternalLink, GitBranch, Lock } from 'lucide-react';
-import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Projects = () => {
-  const reduced = usePrefersReducedMotion();
   return (
-    <section id="projects" className="perf-section py-20 px-6 max-w-6xl mx-auto relative z-10 w-full scroll-mt-20">
+    <section id="projects" className="py-20 px-6 max-w-6xl mx-auto relative z-10 w-full scroll-mt-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -25,11 +23,11 @@ const Projects = () => {
         {projectsData.map((project, index) => (
           <motion.div
             key={project.id}
-            initial={reduced ? false : { opacity: 0, y: 30 }}
-            whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-            viewport={reduced ? undefined : { once: true, margin: "-100px" }}
-            transition={{ duration: reduced ? 0.28 : 0.6, delay: reduced ? 0 : index * 0.08 }}
-            className="group glass-card rounded-3xl overflow-hidden flex flex-col h-full transform transition-all duration-300 md:hover:-translate-y-2 md:hover:shadow-[0_20px_40px_-15px_rgba(56,189,248,0.15)] xl:hover:rotate-1"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="group glass-card rounded-3xl overflow-hidden flex flex-col h-full transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(56,189,248,0.15)] xl:hover:rotate-1"
           >
             {/* Image Container */}
             <div className="relative h-64 overflow-hidden bg-secondary/50">
@@ -40,7 +38,7 @@ const Projects = () => {
                 decoding="async"
                 width={1024}
                 height={576}
-                className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
               

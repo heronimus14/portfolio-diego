@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { skillsData } from '../data/skills';
 import { Code2, Palette, HeartHandshake } from 'lucide-react';
-import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const categories = [
   {
@@ -43,14 +42,12 @@ const chipVariants = {
 };
 
 const Skills = () => {
-  const reduced = usePrefersReducedMotion();
   return (
-    <section id="skills" className="perf-section py-20 px-6 max-w-6xl mx-auto relative z-10 w-full scroll-mt-20 overflow-hidden">
+    <section id="skills" className="py-20 px-6 max-w-6xl mx-auto relative z-10 w-full scroll-mt-20 overflow-hidden">
       <motion.div
-        initial={reduced ? false : { opacity: 0, y: 20 }}
-        whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-        viewport={reduced ? undefined : { once: true, margin: '-100px' }}
-        transition={{ duration: reduced ? 0.3 : 0.5 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-100px' }}
         className="mb-12 text-center"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -65,10 +62,10 @@ const Skills = () => {
         {categories.map((cat, catIndex) => (
           <motion.div
             key={cat.key}
-            initial={reduced ? false : { opacity: 0, y: 30 }}
-            whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-            viewport={reduced ? undefined : { once: true, margin: '-50px' }}
-            transition={{ duration: reduced ? 0.28 : 0.5, delay: reduced ? 0 : catIndex * 0.12 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: catIndex * 0.15 }}
             className={`glass-card p-6 rounded-3xl transition-colors duration-300 ${cat.borderHover}`}
           >
             <div className={`flex items-center gap-3 mb-5 ${cat.color}`}>
@@ -80,26 +77,17 @@ const Skills = () => {
 
             <div className="flex flex-wrap gap-2">
               {skillsData[cat.key].map((skill, i) => (
-                reduced ? (
-                  <span
-                    key={skill}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ) : (
-                  <motion.span
-                    key={skill}
-                    custom={i}
-                    variants={chipVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 hover:border-accent-light/30 hover:text-white transition-colors"
-                  >
-                    {skill}
-                  </motion.span>
-                )
+                <motion.span
+                  key={skill}
+                  custom={i}
+                  variants={chipVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10 hover:border-accent-light/30 hover:text-white transition-colors"
+                >
+                  {skill}
+                </motion.span>
               ))}
             </div>
           </motion.div>
