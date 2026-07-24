@@ -16,7 +16,7 @@ export const experiencesData = [
     role: "Committee Member",
     image: "/images/sco.jpg",
     description: "Terlibat dalam kepanitiaan konser dengan membantu koordinasi tim dan kelancaran pelaksanaan acara.",
-    skills: ["Event Coordination, Communication, Teamwork"]
+    skills: ["Event Coordination", "Communication", "Teamwork"]
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ export const experiencesData = [
     role: "Coaching Division",
     image: "/images/psm.jpg",
     description: "Berperan dalam divisi kepelatihan untuk mendukung latihan, kesiapan anggota, dan pengembangan performa tim.",
-    skills: ["Coaching, Leadership, Teamwork"]
+    skills: ["Coaching", "Leadership", "Teamwork"]
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ export const experiencesData = [
     role: "Human Resource Development",
     image: "/images/bem.jpg",
     description: "Menjadi bagian penting dari Fakultas untuk selalu bertumbuh dan berkembang, dengan pengalaman disiplin, berpikir kritis, dan terbiasa bekerja dalam tim.",
-    skills: ["Human Resource Development, Communication, Leadership"]
+    skills: ["Human Resource Development", "Communication", "Leadership"]
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ export const experiencesData = [
     role: "Committee Member",
     image: "/images/iska.jpg",
     description: "Terlibat dalam kepanitiaan kegiatan nasional dengan mendukung koordinasi dan kelancaran rangkaian acara.",
-    skills: ["Event Management, Coordination, Communication"]
+    skills: ["Event Management", "Coordination", "Communication"]
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ export const experiencesData = [
     role: "Volunteer",
     image: "/images/scj.jpg",
     description: "Berkontribusi sebagai relawan dalam mendukung operasional dan kelancaran pelaksanaan acara besar.",
-    skills: ["Teamwork, Time Management, Responsibility"]
+    skills: ["Teamwork", "Time Management", "Responsibility"]
   },
   {
     id: 7,
@@ -61,6 +61,6 @@ export const experiencesData = [
     role: "Program Division & MC",
     image: "/images/kyd.jpg",
     description: "Berperan sebagai seksi acara sekaligus MC dalam mengatur rundown dan memandu jalannya kegiatan.",
-    skills: ["Event Planning, Public Speaking, Communication"]
+    skills: ["Event Planning", "Public Speaking", "Communication"]
   }
 ];
